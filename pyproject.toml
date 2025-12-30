@@ -1,0 +1,22 @@
+[project]
+name = "airflow-sftp-extensions-provider"
+version = "0.1.0"
+authors = [
+    {name="Achim Gädke", email="Achim.Gaedke@lynker-analytics.com"},
+]
+description = "Operators for SFTP extensions (e.g statvfs)"
+readme = "README.md"
+dependencies = [
+    "apache-airflow>=2.10.0",
+    "apache-airflow-providers-sftp",
+]
+
+[project.urls]
+"Source Code" = "https://github.com/lynker-analytics/airflow-sftp-extensions-provider"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project.entry-points."apache_airflow_provider"]
+provider_info = "airflow_sftp_extensions_provider.provider_info:get_provider_info"
