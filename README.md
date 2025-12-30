@@ -1,28 +1,6 @@
 # Airflow SFTP extensions provider
 
-Provides access to the SFTP server extensions.
-
-## About SFTP protocol extensions
-
-As found for openssh 9.6 (as found on Ubuntu 24.04):
-
-https://github.com/openssh/openssh-portable/blob/master/PROTOCOL (section 4)
-
-```json
-{'posix-rename@openssh.com': '1',
- 'statvfs@openssh.com': '2',
- 'fstatvfs@openssh.com': '2',
- 'hardlink@openssh.com': '1',
- 'fsync@openssh.com': '1',
- 'lsetstat@openssh.com': '1',
- 'limits@openssh.com': '1',
- 'expand-path@openssh.com': '1',
- 'copy-data': '1',
- 'home-directory': '1',
- 'users-groups-by-id@openssh.com': '1'}
-```
-
-At the moment only querying the supported extensions and `statvfs` are implemented in this repository.
+Provides Airflow Operators to use commands provided by SFTP server extensions.
 
 ## Example
 
@@ -62,6 +40,30 @@ Returns:
     "namemax": 255
 }
 ```
+
+## About SFTP protocol extensions
+
+Extensions provided by the SFTP subsystem of openssh 9.6 (as found on Ubuntu 24.04):
+
+```json
+[
+ ["posix-rename@openssh.com", "1"],
+ ["statvfs@openssh.com", "2"],
+ ["fstatvfs@openssh.com", "2"],
+ ["hardlink@openssh.com", "1"],
+ ["fsync@openssh.com", "1"],
+ ["lsetstat@openssh.com",  "1"],
+ ["limits@openssh.com", "1"],
+ ["expand-path@openssh.com", "1"],
+ ["copy-data", "1"],
+ ["home-directory", "1"],
+ ["users-groups-by-id@openssh.com", "1"]
+]
+```
+
+Protocol details are explained in section 4 of https://github.com/openssh/openssh-portable/blob/master/PROTOCOL
+
+At the moment only querying the supported extensions and `statvfs` are implemented in this repository.
 
 ## Implementation:
 
